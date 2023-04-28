@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span id="title">Severini official site</span>
+  <span id="fill-remaining-space"></span>
+  <ng-container *ngFor="let opt of OPTIONS">
+    <button *ngIf="opt !== option; else selected" mat-button (click)="option = opt">{{opt}}</button>
+    <ng-template #selected><button mat-raised-button color="primary">{{opt}}</button></ng-template>
+  </ng-container>
+</mat-toolbar>

@@ -1,0 +1,26 @@
+<mat-toolbar id="header">
+  <button id="menu" class="btnMenu" mat-fab (click)="toggleMenu()">
+    <mat-icon color="primary">{{iconMenu}}</mat-icon>
+  </button>
+  <span id="fill-remaining-space"></span>
+  <span id="title">Severini official site</span>
+</mat-toolbar>
+
+<mat-toolbar id="menuIcons" color="primary" *ngIf="menuOpen">
+  <ng-container *ngFor="let opt of OPTIONS">
+    <mat-toolbar-row *ngIf="opt[0] != option; else selected" (click)="setNewVoice(opt[0])">
+      <button mat-fab color="primary" class="btnMenu">
+        <mat-icon>{{opt[0]}}</mat-icon>
+      </button>
+      <div class="menuComponent"><p>{{opt[1]}}</p></div>
+    </mat-toolbar-row>
+    <ng-template #selected>
+      <mat-toolbar-row class="selected">
+        <button mat-fab class="btnMenu selected" (click)="setNewVoice(opt[0])">
+          <mat-icon>{{opt[0]}}</mat-icon>
+        </button>
+        <div class="menuComponent selected"><p>{{opt[1]}}</p></div>
+      </mat-toolbar-row>
+    </ng-template>
+  </ng-container>
+</mat-toolbar>

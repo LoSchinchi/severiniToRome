@@ -1,0 +1,13 @@
+#title {
+  color: #3f51b5;
+  font-size: 30px;
+}
+
+#fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+button {
+  width: 15%;
+  font-size: 100%;
+}
