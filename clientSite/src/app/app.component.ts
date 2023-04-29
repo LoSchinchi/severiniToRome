@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {PagesControlService} from "./pagesControl.service";
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,16 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   inner_width: undefined | number;
   title: string = 'clientSite';
+  page: string = 'home';
 
   ngOnInit() {
     this.inner_width = window.innerWidth;
+  }
+
+  constructor(public pageService: PagesControlService) { }
+
+  getPage(): string {
+    return this.pageService.pageSelected;
   }
 
   @HostListener('window:resize', ['$event'])

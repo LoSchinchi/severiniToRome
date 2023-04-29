@@ -7,19 +7,19 @@
 </mat-toolbar>
 
 <mat-toolbar id="menuIcons" color="primary" *ngIf="menuOpen">
-  <ng-container *ngFor="let opt of OPTIONS">
-    <mat-toolbar-row *ngIf="opt[0] != option; else selected" (click)="setNewVoice(opt[0])">
+  <ng-container *ngFor="let el of getNamePages(); let i = index">
+    <mat-toolbar-row *ngIf="el != getPageSel(); else selected" (click)="setNewVoice(el)">
       <button mat-fab color="primary" class="btnMenu">
-        <mat-icon>{{opt[0]}}</mat-icon>
+        <mat-icon>{{ICONS[i]}}</mat-icon>
       </button>
-      <div class="menuComponent"><p>{{opt[1]}}</p></div>
+      <div class="menuComponent"><p>{{el}}</p></div>
     </mat-toolbar-row>
     <ng-template #selected>
       <mat-toolbar-row class="selected">
-        <button mat-fab class="btnMenu selected" (click)="setNewVoice(opt[0])">
-          <mat-icon>{{opt[0]}}</mat-icon>
+        <button mat-fab class="btnMenu selected">
+          <mat-icon>{{ICONS[i]}}</mat-icon>
         </button>
-        <div class="menuComponent selected"><p>{{opt[1]}}</p></div>
+        <div class="menuComponent selected"><p>{{el}}</p></div>
       </mat-toolbar-row>
     </ng-template>
   </ng-container>

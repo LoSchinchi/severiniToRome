@@ -11,12 +11,18 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from '@angular/material/icon';
+import { HomePageComponent } from './home-page/home-page.component';
+import { InstructionsPageComponent } from './instructions-page/instructions-page.component';
+import { DownloadsPageComponent } from './downloads-page/downloads-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomePageComponent,
+    InstructionsPageComponent,
+    DownloadsPageComponent
   ],
   imports: [
     BrowserModule,

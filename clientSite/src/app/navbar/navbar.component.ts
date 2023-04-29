@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PagesControlService} from "../pagesControl.service";
+
 
 @Component({
   selector: 'app-navbar',
@@ -6,8 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent {
-  OPTIONS: [string, string, string, string] = ['home', 'instructions', 'downloads', 'let\'s play'];
+export class NavbarComponent implements OnInit {
+  constructor(public pageService: PagesControlService) { }
 
-  option: string = 'home';
+  ngOnInit() {
+    setInterval(() => console.log(this.getPageSel()), 1000);
+  }
+
+  changePage(newPage: string) {
+    this.pageService.pageSelected = newPage;
+  }
+
+  getNamePages(): Array<string> {
+    return this.pageService.NAME_PAGES;
+  }
+  getPageSel(): string {
+    return this.pageService.pageSelected
+  }
+
+
 }

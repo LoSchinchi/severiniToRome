@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PagesControlService } from "../pagesControl.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -8,21 +9,25 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   menuOpen: boolean = false;
   iconMenu: string = 'menu';
-  OPTIONS: [[string, string], [string, string], [string, string], [string, string]] = [
-    [ 'home', 'Home' ],
-    [ 'integration_instructions', 'Instructions' ],
-    [ 'download', 'Downloads' ],
-    [ 'play_arrow', 'Let\'s play' ]
-  ];
-  option: string = 'home';
+
+  ICONS: Array<string> = ['home', 'integration_instructions', 'download', 'play_arrow'];
+
+  constructor(public pageService: PagesControlService) { }
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     this.iconMenu = this.iconMenu === 'menu'? 'close': 'menu';
   }
 
-  setNewVoice(opt: string): void {
-    this.option = opt;
-    setTimeout(() => this.toggleMenu(), 1000);
+  setNewVoice(page: string): void {
+    this.pageService.pageSelected = page;
+    setTimeout(() => this.toggleMenu(), 500);
+  }
+
+  getNamePages(): Array<string> {
+    return this.pageService.NAME_PAGES;
+  }
+  getPageSel(): string {
+    return this.pageService.pageSelected
   }
 }
