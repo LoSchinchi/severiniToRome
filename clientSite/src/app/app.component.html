@@ -1,8 +1,4 @@
 <app-navbar *ngIf="inner_width != undefined && inner_width >= 950; else sidebar"></app-navbar>
 <ng-template #sidebar><app-sidebar></app-sidebar></ng-template>
 
-<ng-container [ngSwitch]="getPage()">
-  <app-home-page *ngSwitchCase="'home'"></app-home-page>
-  <app-instructions-page *ngSwitchCase="'instructions'"></app-instructions-page>
-  <app-downloads-page *ngSwitchCase="'downloads'"></app-downloads-page>
-</ng-container>
+<router-outlet *ngIf="!pageService.isSidebarOpened"></router-outlet>

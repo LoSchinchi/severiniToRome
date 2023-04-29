@@ -1,7 +1,8 @@
-# Official severini's server
+# Severini's official server
+
 
 node modules to install:
-- nodemon
+- nodemon (optional)
 - fs
 - ws
-- child_process
+- child process

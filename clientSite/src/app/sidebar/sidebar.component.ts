@@ -17,11 +17,12 @@ export class SidebarComponent {
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     this.iconMenu = this.iconMenu === 'menu'? 'close': 'menu';
+    this.pageService.isSidebarOpened = this.menuOpen;
   }
 
   setNewVoice(page: string): void {
     this.pageService.pageSelected = page;
-    setTimeout(() => this.toggleMenu(), 500);
+    setTimeout(() => this.toggleMenu(), 200);
   }
 
   getNamePages(): Array<string> {
@@ -29,5 +30,8 @@ export class SidebarComponent {
   }
   getPageSel(): string {
     return this.pageService.pageSelected
+  }
+  getRoutes(): Array<string> {
+    return this.pageService.ROUTES;
   }
 }

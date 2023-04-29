@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {PagesControlService} from "../pagesControl.service";
-
+import { Component } from '@angular/core';
+import { PagesControlService } from '../pagesControl.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +7,8 @@ import {PagesControlService} from "../pagesControl.service";
   styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   constructor(public pageService: PagesControlService) { }
-
-  ngOnInit() {
-    setInterval(() => console.log(this.getPageSel()), 1000);
-  }
 
   changePage(newPage: string) {
     this.pageService.pageSelected = newPage;
@@ -22,9 +17,12 @@ export class NavbarComponent implements OnInit {
   getNamePages(): Array<string> {
     return this.pageService.NAME_PAGES;
   }
+
   getPageSel(): string {
     return this.pageService.pageSelected
   }
 
-
+  getRoutes(): Array<string> {
+    return this.pageService.ROUTES;
+  }
 }
