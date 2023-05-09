@@ -1,6 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {PagesControlService} from './pagesControl.service';
-import {NavigationEnd, Router} from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { PagesControlService } from './pagesControl.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.router.events.forEach((event: any) => {
       if(event instanceof NavigationEnd)
         this.routeToPage(event.url);
-    })
+    });
   }
 
   routeToPage(url: string) {
@@ -29,11 +29,7 @@ export class AppComponent implements OnInit {
     else if(url === '/instructions' || url === '/downloads')
       this.pageService.pageSelected = url.substring(1);
     else
-      this.pageService.pageSelected = 'let\' play';
-  }
-
-  getPage(): string {
-    return this.pageService.pageSelected;
+      this.pageService.pageSelected = 'game';
   }
 
   @HostListener('window:resize', ['$event'])

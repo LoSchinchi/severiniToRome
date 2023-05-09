@@ -14,7 +14,7 @@ export class NavbarComponent {
     this.pageService.pageSelected = newPage;
   }
 
-  getNamePages(): Array<string> {
+  getNamePages(): string[] {
     return this.pageService.NAME_PAGES;
   }
 
@@ -22,7 +22,7 @@ export class NavbarComponent {
     return this.pageService.pageSelected
   }
 
-  getRoutes(): Array<string> {
+  getRoutes(): string[] {
     return this.pageService.ROUTES;
   }
 }

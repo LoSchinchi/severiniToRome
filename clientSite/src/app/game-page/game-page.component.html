@@ -1,2 +1,17 @@
-<p>game-page works!</p>
-<app-game-home-page></app-game-home-page>
+<div id="formContainer" *ngIf="formActive">
+  <div id="form">
+      <div id="checkbox-container">
+          <mat-checkbox #audio>Abilita Audio</mat-checkbox>
+          <mat-checkbox #fullscreen>Abilita Fullscreen</mat-checkbox>
+      </div>
+      <div id="scelta-cam">
+        <video #video [width]="300" [height]="190" autoplay></video>
+        <mat-form-field appearance="fill">
+          <mat-select #selectCamera value="{{labelInUse}}" (selectionChange)="changeCamera(selectCamera.value)">
+            <mat-option *ngFor="let lab of labels" value="{{lab}}">{{lab}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="send(audio.checked, fullscreen.checked, selectCamera.value)">Conferma</button>
+  </div>
+</div>

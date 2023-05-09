@@ -1,4 +1,5 @@
-<app-navbar *ngIf="inner_width != undefined && inner_width >= 950; else sidebar"></app-navbar>
-<ng-template #sidebar><app-sidebar></app-sidebar></ng-template>
-
+<div *ngIf="!this.pageService.isFullScreen">
+  <app-navbar *ngIf="inner_width != undefined && inner_width >= 950; else sidebar"></app-navbar>
+  <ng-template #sidebar><app-sidebar></app-sidebar></ng-template>
+</div>
 <router-outlet *ngIf="!pageService.isSidebarOpened"></router-outlet>

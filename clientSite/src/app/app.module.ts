@@ -17,6 +17,12 @@ import { DownloadsPageComponent } from './downloads-page/downloads-page.componen
 import {MatExpansionModule} from "@angular/material/expansion";
 import { GameHomePageComponent } from './game-home-page/game-home-page.component';
 import { GamePageComponent } from './game-page/game-page.component';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {NgForOf} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -38,7 +44,13 @@ import { GamePageComponent } from './game-page/game-page.component';
         MatListModule,
         MatToolbarModule,
         MatIconModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatRadioModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        NgForOf
     ],
   providers: [],
   bootstrap: [AppComponent]
