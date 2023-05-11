@@ -9,5 +9,6 @@ export class PagesControlService {
   pageSelected: string = 'home';
   ROUTES: string[] = ['/', '/instructions', '/downloads', '/game'];
   isSidebarOpened: boolean = false;
-  isFullScreen = false;
+  isFullScreen: boolean | undefined = false;
+  gamePageActive: string = 'home';
 }

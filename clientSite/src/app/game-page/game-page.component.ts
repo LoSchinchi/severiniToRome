@@ -1,32 +1,26 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { PagesControlService } from '../pagesControl.service';
-
-import '@tensorflow/tfjs';
-import '@tensorflow/tfjs-core';
-import '@tensorflow/tfjs-converter';
-import '@tensorflow/tfjs-backend-webgl';
-import '@mediapipe/pose';
-import * as pose from '@tensorflow-models/pose-detection';
+import { CalibrazioneService } from "../calibrazione.service";
 
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
   styleUrls: ['./game-page.component.css']
 })
-export class GamePageComponent {
-  cameras: Object = {};
+export class GamePageComponent implements OnDestroy {
+  cameras: Object = { };
   labels: string[] = [];
-  @ViewChild("video")
-  public video: ElementRef | undefined;
-  interval: number | undefined;
-  detector: any;
-  formActive: boolean = true;
   labelInUse: any;
-  currentStream: MediaStream | undefined;
 
   document: HTMLElement | undefined;
+  @ViewChild("video") public video: ElementRef | undefined;
+  positionForm: string = 'relative';
+  topForm: string = '0';
 
-  constructor(public pcs: PagesControlService) {
+  formActive: boolean = true;
+  currentStream: MediaStream | undefined;
+
+  constructor(public pcs: PagesControlService, public calibrazioneService: CalibrazioneService) {
     this.document = document.documentElement;
     navigator.mediaDevices.enumerateDevices().then(arr => {
       let idInUse: string = '';
@@ -41,16 +35,12 @@ export class GamePageComponent {
           this.labels.push(device.label);
         }
       if (idInUse !== '')
-        this.startCamera(idInUse).then(() => this.setDetector().then(() => this.interval = setInterval(() => this.poses(), 1000)));
+        this.startCamera(idInUse).then(() => { });
     });
   }
 
-  async startCamera(deviceId: string) {
-    if(this.currentStream !== undefined) {
-      this.currentStream.getTracks().forEach(track => track.stop())
-      this.currentStream = undefined;
-    }
-
+  async startCamera(deviceId: string): Promise<void> {
+    this.closeStream();
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
@@ -67,14 +57,13 @@ export class GamePageComponent {
     }
   }
 
-  changeCamera(label: string) {
+  changeCamera(label: string): void {
     this.labelInUse = label
-    clearInterval(this.interval);
     // @ts-ignore
-    this.startCamera(this.cameras[label]).then(() => this.setDetector().then(() => this.interval = setInterval(() => this.poses(), 1000)));
+    this.startCamera(this.cameras[label]).then(() => { });
   }
 
-  send(audio: boolean, fullscreen: boolean, camera: string) {
+  send(audio: boolean, fullscreen: boolean, camera: string): void {
     let el = this.video?.nativeElement;
     el.id = 'video';
     this.document?.appendChild(el);
@@ -84,14 +73,23 @@ export class GamePageComponent {
       this.document?.requestFullscreen().then(() => { });
       this.document?.addEventListener('fullscreenchange', () => this.pcs.isFullScreen = !this.pcs.isFullScreen);
     }
+    this.positionForm = 'absolute';
+    this.topForm = '-1000px';
+
+    this.calibrazioneService.video = this.video;
+    this.calibrazioneService.setDetector()
+      .then(() => this.calibrazioneService.interval = setInterval(() => this.calibrazioneService.poses(), 1000 / this.calibrazioneService.FRAMES));
   }
 
-  async setDetector() {
-    this.detector = await pose.createDetector(pose.SupportedModels.BlazePose, {runtime: 'tfjs', modelType: 'full'});
+  closeStream(): void {
+    if(this.currentStream !== undefined) {
+      this.currentStream.getTracks().forEach(track => track.stop())
+      this.currentStream = undefined;
+    }
   }
 
-  async poses() {
-    const poses = await this.detector?.estimatePoses(this.video?.nativeElement as HTMLVideoElement);
-    console.log(poses);
+  ngOnDestroy(): void {
+    this.closeStream();
+    clearInterval(this.calibrazioneService.interval);
   }
 }

@@ -1,4 +1,4 @@
-<div id="formContainer" *ngIf="formActive">
+<div id="formContainer" [ngStyle]="{ 'position': positionForm, 'top': topForm }">
   <div id="form">
       <div id="checkbox-container">
           <mat-checkbox #audio>Abilita Audio</mat-checkbox>
@@ -15,3 +15,8 @@
       <button mat-raised-button color="primary" (click)="send(audio.checked, fullscreen.checked, selectCamera.value)">Conferma</button>
   </div>
 </div>
+
+<ng-container *ngIf="!formActive" [ngSwitch]="pcs.gamePageActive">
+  <app-game-home-page [isFullScreen]="pcs.isFullScreen" *ngSwitchCase="'home'"></app-game-home-page>
+  <app-game-calib-page [isFullScreen]="pcs.isFullScreen" *ngSwitchCase="'calib'"></app-game-calib-page>
+</ng-container>

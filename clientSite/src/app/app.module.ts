@@ -23,6 +23,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {NgForOf} from "@angular/common";
+import { GameCalibPageComponent } from './game-calib-page/game-calib-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {NgForOf} from "@angular/common";
     InstructionsPageComponent,
     DownloadsPageComponent,
     GameHomePageComponent,
-    GamePageComponent
+    GamePageComponent,
+    GameCalibPageComponent
   ],
     imports: [
         BrowserModule,
