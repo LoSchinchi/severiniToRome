@@ -3,6 +3,6 @@
   <span id="fill-remaining-space"></span>
   <ng-container *ngFor="let opt of getNamePages(); let i = index">
     <button *ngIf="opt !== getPageSel(); else selected" mat-button (click)="changePage(opt)" [routerLink]="[getRoutes()[i]]">{{opt}}</button>
-    <ng-template #selected><button mat-raised-button color="primary">{{opt}}</button></ng-template>
+    <ng-template #selected><button mat-raised-button id="selected">{{opt}}</button></ng-template>
   </ng-container>
 </mat-toolbar>

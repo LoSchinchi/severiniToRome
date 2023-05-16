@@ -11,5 +11,8 @@ router.get('/instructions', function(req, res, next) {
 router.get('/downloads', function(req, res, next) {
   res.render('index');
 });
+router.get('/play', function(req, res, next) {
+  res.render('index');
+});
 
 module.exports = router;

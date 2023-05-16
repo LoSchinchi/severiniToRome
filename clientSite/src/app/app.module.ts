@@ -24,6 +24,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {NgForOf} from "@angular/common";
 import { GameCalibPageComponent } from './game-calib-page/game-calib-page.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { GamePianoPageComponent } from './game-piano-page/game-piano-page.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { GameCalibPageComponent } from './game-calib-page/game-calib-page.compon
     DownloadsPageComponent,
     GameHomePageComponent,
     GamePageComponent,
-    GameCalibPageComponent
+    GameCalibPageComponent,
+    GamePianoPageComponent
   ],
     imports: [
         BrowserModule,
@@ -52,7 +57,10 @@ import { GameCalibPageComponent } from './game-calib-page/game-calib-page.compon
         ReactiveFormsModule,
         MatSelectModule,
         MatCheckboxModule,
-        NgForOf
+        NgForOf,
+        MatProgressSpinnerModule,
+        MatGridListModule,
+        MatMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]

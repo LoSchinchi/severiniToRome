@@ -1,5 +1,5 @@
 #title {
-  color: #3f51b5;
+  color: #673ab7;
   font-size: 30px;
 }
 
@@ -10,4 +10,9 @@
 button {
   width: 15%;
   font-size: 100%;
+}
+
+#selected {
+  background-color: #673ab7;
+  color: white;
 }

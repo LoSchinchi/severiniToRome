@@ -1,22 +1,30 @@
 <div id="formContainer" [ngStyle]="{ 'position': positionForm, 'top': topForm }">
   <div id="form">
-      <div id="checkbox-container">
-          <mat-checkbox #audio>Abilita Audio</mat-checkbox>
-          <mat-checkbox #fullscreen>Abilita Fullscreen</mat-checkbox>
-      </div>
-      <div id="scelta-cam">
-        <video #video [width]="300" [height]="190" autoplay></video>
-        <mat-form-field appearance="fill">
-          <mat-select #selectCamera value="{{labelInUse}}" (selectionChange)="changeCamera(selectCamera.value)">
-            <mat-option *ngFor="let lab of labels" value="{{lab}}">{{lab}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <button mat-raised-button color="primary" (click)="send(audio.checked, fullscreen.checked, selectCamera.value)">Conferma</button>
+    <div id="checkbox-container">
+      <mat-checkbox #fullscreen>Abilita Fullscreen</mat-checkbox>
+    </div>
+    <div id="scelta-cam">
+      <video #video [width]="300" [height]="190" autoplay></video>
+      <mat-form-field appearance="fill">
+        <mat-select #selectCamera value="{{labelInUse}}" (selectionChange)="changeCamera(selectCamera.value)">
+          <mat-option *ngFor="let lab of labels" value="{{lab}}">{{lab}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button id="continue" (click)="send(fullscreen.checked)">Conferma</button>
   </div>
 </div>
 
-<ng-container *ngIf="!formActive" [ngSwitch]="pcs.gamePageActive">
+<div id="withSpinner" [ngStyle]="{ 'height': pcs.isFullScreen? '100%' : 'calc(100% - 64px)' }" *ngIf="attesa && !formActive"><mat-spinner></mat-spinner></div>
+<div *ngIf="error" id="error">
+  <p>Devi connetterti ad Internet fino alla fine del caricamento</p>
+  <br>
+  <p>Riapri la pagina</p>
+
+</div>
+
+<ng-container *ngIf="!formActive && !attesa" [ngSwitch]="pcs.gamePageActive">
   <app-game-home-page [isFullScreen]="pcs.isFullScreen" *ngSwitchCase="'home'"></app-game-home-page>
   <app-game-calib-page [isFullScreen]="pcs.isFullScreen" *ngSwitchCase="'calib'"></app-game-calib-page>
+  <app-game-piano-page [isFullScreen]="pcs.isFullScreen" [conBase]="pcs.withTrack" *ngSwitchCase="'piano'"></app-game-piano-page>
 </ng-container>

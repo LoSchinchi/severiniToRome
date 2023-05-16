@@ -9,7 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   inner_width: undefined | number;
-  title: string = 'clientSite';
+  title: string = 'ClientSite';
   page: string = 'home';
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     else if(url === '/instructions' || url === '/downloads')
       this.pageService.pageSelected = url.substring(1);
     else
-      this.pageService.pageSelected = 'game';
+      this.pageService.pageSelected = 'play';
   }
 
   @HostListener('window:resize', ['$event'])

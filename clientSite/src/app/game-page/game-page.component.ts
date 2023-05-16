@@ -8,7 +8,7 @@ import { CalibrazioneService } from "../calibrazione.service";
   styleUrls: ['./game-page.component.css']
 })
 export class GamePageComponent implements OnDestroy {
-  cameras: Object = { };
+  cameras: any = { };
   labels: string[] = [];
   labelInUse: any;
 
@@ -19,6 +19,8 @@ export class GamePageComponent implements OnDestroy {
 
   formActive: boolean = true;
   currentStream: MediaStream | undefined;
+  attesa: boolean = false;
+  error: boolean = false;
 
   constructor(public pcs: PagesControlService, public calibrazioneService: CalibrazioneService) {
     this.document = document.documentElement;
@@ -59,15 +61,15 @@ export class GamePageComponent implements OnDestroy {
 
   changeCamera(label: string): void {
     this.labelInUse = label
-    // @ts-ignore
     this.startCamera(this.cameras[label]).then(() => { });
   }
 
-  send(audio: boolean, fullscreen: boolean, camera: string): void {
+  send(fullscreen: boolean): void {
+    this.attesa = true;
     let el = this.video?.nativeElement;
     el.id = 'video';
     this.document?.appendChild(el);
-    console.log(audio, fullscreen, camera)
+
     this.formActive = false;
     if(fullscreen) {
       this.document?.requestFullscreen().then(() => { });
@@ -78,7 +80,11 @@ export class GamePageComponent implements OnDestroy {
 
     this.calibrazioneService.video = this.video;
     this.calibrazioneService.setDetector()
-      .then(() => this.calibrazioneService.interval = setInterval(() => this.calibrazioneService.poses(), 1000 / this.calibrazioneService.FRAMES));
+      .catch(() => this.error = true)
+      .then(() => {
+        this.attesa = false;
+        this.calibrazioneService.interval = setInterval(() => this.calibrazioneService.poses(), 1000 / this.calibrazioneService.FRAMES)
+      });
   }
 
   closeStream(): void {
@@ -90,6 +96,7 @@ export class GamePageComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.closeStream();
+    this.pcs.gamePageActive = 'home';
     clearInterval(this.calibrazioneService.interval);
   }
 }

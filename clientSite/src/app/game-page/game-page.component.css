@@ -2,6 +2,25 @@
   margin-left: 16px;
 }
 
+#error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 64px);
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  font-size: 25px;
+}
+
+#continue {
+  background-color: #673ab7;
+  color: white;
+}
+
 #formContainer {
   width: 100%;
   display: flex;
@@ -52,28 +71,10 @@ button {
   top: -300px;
 }
 
-/*
-.example-container mat-form-field + mat-form-field {
-  margin-left: 8px;
-}
-
-.example-container mat-form-field {
-  width: 220px;
-}
-
-.example-container form {
-  margin-bottom: 20px;
-}
-
-.example-container form > * {
-  margin: 12px 0;
-}
-
-.example-container .mat-radio-button {
-  margin: 0 12px;
-}
-
-.example-form-fields {
+#withSpinner {
+  width: 100%;
   display: flex;
-  align-items: flex-start;
-}*/
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}

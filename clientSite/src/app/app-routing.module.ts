@@ -6,10 +6,10 @@ import { DownloadsPageComponent } from './downloads-page/downloads-page.componen
 import { GamePageComponent } from "./game-page/game-page.component";
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'instructions', component: InstructionsPageComponent },
-  { path: 'downloads', component: DownloadsPageComponent },
-  { path: 'game', component: GamePageComponent }
+  { path: '', component: HomePageComponent, title: 'Severini | Home' },
+  { path: 'instructions', component: InstructionsPageComponent, title: 'Severini | Instructions' },
+  { path: 'downloads', component: DownloadsPageComponent, title: 'Severini | Downloads' },
+  { path: 'game', component: GamePageComponent, title: 'Severini | Play' }
 ];
 
 @NgModule({
