@@ -1,0 +1,385 @@
+#bg {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  z-index: -1;
+}
+
+#info {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#sotto {
+  max-height: calc(55% - 50px);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+
+  position: fixed;
+  bottom: -50px;
+}
+
+#track-volume {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+#track-volume > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+#testo {
+  width: 80%;
+  font-size: 35px;
+  border-radius: 10px;
+  background-color: lightgray;
+  text-align: center;
+  vertical-align: center;
+  border: 6px solid #cb6ce6;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px #cb6ce6) drop-shadow(0 0 50px #cb6ce6) contrast(2) brightness(1.5);
+  transition: all 0.3s ease;
+  -webkit-user-select: none;
+}
+
+#volume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#barra {
+  width: 85%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+#barra > div {
+  height: 100%;
+  background-color: #cb6ce6;
+  filter: drop-shadow(0 0 10px #cb6ce6) drop-shadow(0 0 50px #cb6ce6) contrast(2) brightness(1.5);
+  width: 100%;
+  cursor: pointer;
+}
+#_0 {
+  border-radius: 25px 0 0 25px;
+}
+#_100 {
+  border-radius: 0 25px 25px 0;
+}
+#rotVolume {
+  height: 120px;
+  width: 120px;
+  border-radius: 100%;
+  background-color: white;
+  filter: drop-shadow(0 0 10px white) drop-shadow(0 0 50px white) contrast(2) brightness(1.5);
+  position: fixed;
+  cursor: pointer;
+  align-self: center;
+}
+
+#menuSong {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 70%;
+  height: 85px;
+}
+
+mat-select {
+  width: 100%;
+  font-size: 25px;
+  filter: drop-shadow(0 0 10px #cb6ce6) drop-shadow(0 0 50px #cb6ce6) contrast(2) brightness(1.5);
+
+}
+mat-option {
+  height: 50px;
+  font-size: 25px;
+}
+
+.icon {
+  background-color: #cb6ce6;
+  filter: drop-shadow(0 0 10px #cb6ce6) drop-shadow(0 0 50px #cb6ce6) contrast(2) brightness(1.5);
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.icon mat-icon {
+  width: 90px;
+  height: 90px;
+  font-size: 90px;
+}
+
+#div-perispective {
+  display: flex;
+  perspective: 1000px;
+  justify-content: center;
+  margin: 0;
+}
+
+#piano {
+  /*margin: -200px auto 100px;*/
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  transform: rotateX(50deg);
+  animation: piano 0.6s 0.8s ease;
+  animation-fill-mode: backwards;
+  transition: transform 0.3s ease;
+}
+#piano::before, #piano::after {
+  content: '';
+  position: absolute;
+  background: rgba(68, 68, 68, 0.97);
+  background-clip: content-box;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  transform: translateZ(-76px);
+  box-shadow: 0 0 40px fade(#444, 40%), 0 0 0 100px white;
+}
+#piano::after {
+  left: 25px;
+  right: 25px;
+  bottom: auto;
+  height: 79px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+
+#piano {
+  margin: -200px auto 100px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  transform: rotateX(50deg);
+  animation: piano 0.6s 0.8s ease;
+  animation-fill-mode: backwards;
+  transition: transform 0.3s ease;
+}
+
+#piano::before, #piano::after {
+  content: '';
+  position: absolute;
+  background: rgba(68, 68, 68, 0.97);
+  background-clip: content-box;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  transform: translateZ(-76px);
+  box-shadow: 0 0 40px fade(#444, 40%), 0 0 0 100px white;
+}
+#piano::after {
+  left: 25px;
+  right: 25px;
+  bottom: auto;
+  height: 79px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+
+.key-1, .key-3, .key-5, .key-6, .key-8, .key-10, .key-12 {
+  position: relative;
+  width: 90px;
+  height: 500px;
+  padding: 0;
+  border: none;
+  border-top: 252px solid transparent;
+  box-sizing: border-box;
+  background-color: #edefee;
+  background-clip: content-box;
+  margin: 0 2px;
+  outline: none;
+  transform-origin: top;
+  transform-style: preserve-3d;
+  box-shadow: inset 2px 0 2px -1px fade(white, 80%),
+  inset -2px 0 2px -1px fade(white, 80%),
+  inset 10px -10px 10px -10px fade(#444, 30%),
+  inset -10px 0 10px -10px fade(#444, 30%),
+  inset 0 -200px 200px -200px fade(white, 70%),
+  inset 0 0 0 1000px fade(#edefee, 50%);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.keyW-active {
+  transform: rotateX(-7deg);
+}
+
+.key-1:active, .key-3:active, .key-5:active, .key-6:active, .key-8:active, .key-10:active, .key-12:active {
+  transform: rotateX(-7deg);
+}
+.key-1:hover, .key-3:hover, .key-5:hover, .key-6:hover, .key-8:hover, .key-10:hover, .key-12:hover {
+  background-color: white;
+}
+.key-1::before, .key-3::before, .key-5::before, .key-6::before, .key-8::before, .key-10::before, .key-12::before {
+  background: white;
+}
+.key-1::before, .key-3::before, .key-5::before, .key-6::before, .key-8::before, .key-10::before, .key-12::before,
+.key-1::after, .key-3::after, .key-5::after, .key-6::after, .key-8::after, .key-10::after, .key-12::after {
+  content: '';
+  background: #edefee;
+  position: absolute;
+  height: 252px;
+  top: -250px;
+  left: 0;
+  box-shadow: inset 0 200px 200px -200px fade(#444, 30%),
+  inset 10px 10px 10px -10px fade(#444, 30%),
+  inset -10px 0 10px -10px fade(#444, 30%),
+  inset 0 0 0 1000px fade(#edefee, 50%);
+  transition: background 0.3s ease;
+}
+.key-1::after, .key-3::after, .key-5::after, .key-6::after, .key-8::after, .key-10::after, .key-12::after {
+  top: 100%;
+  width: 100%;
+  height: 76px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  box-shadow: inset 0 -30px 50px -30px fade(black, 30%),
+  inset 0 2px 1px white,
+  inset 0 4px fade(black, 10%),
+  inset 0 10px 10px -10px fade(black, 40%);
+}
+
+.key-1::before, .key-6::before {
+  right: 26px;
+}
+
+.key-3::before {
+  left: 14px;
+  right: 14px;
+}
+
+.key-5::before, .key-12::before {
+  left: 26px;
+  right: 0;
+}
+
+.key-8::before {
+  left: 14px;
+  right: 20px;
+}
+
+.key-10::before {
+  left: 20px;
+  right: 14px;
+}
+
+.key-2 {
+  position: relative;
+  color: #444;
+  width: 32px;
+  height: 250px;
+  border: none;
+  padding: 0;
+  outline: none;
+  background: rgba(68, 68, 68, 10);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+  transform-origin: top;
+  box-shadow: inset 0 -7px 5px,
+  inset 4px 0 5px,
+  inset -4px 0 5px,
+  inset 0 0 0 1000px fade(rgba(68, 68, 68, 10), 50%);
+  z-index: 1;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin: 0 -10px 0 -22px;
+
+}
+.key-2:active {
+  transform: rotateX(-5deg) translateZ(35px);
+}
+.key-2::before {
+  content: '';
+  position: absolute;
+  background: #444;
+  border-top-left-radius: 6px;
+  top: 0;
+  height: 100%;
+  width: 39px;
+  transform-origin: left;
+  left: 1px;
+  transform: rotateY(93deg);
+  box-shadow: inset -50px 0 50px -50px black;
+}
+
+.key-2::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -2px;
+  width: 100%;
+  border-bottom: 31px solid rgba(68, 68, 68, 98);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  height: 0;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  box-shadow: 0 7px 20px fade(black, 25%),
+  0 3px 5px -2px fade(white, 80%),
+  0 5px,
+  0 20px rgba(68, 68, 68, 98),
+  0 40px rgba(68, 68, 68, 98);
+}
+
+.key-2:nth-child(-n + 7)::before {
+  left: 99%;
+  transform: rotateY(87deg);
+}
+
+.bsx {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.asx {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bdx {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.adx {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -1,0 +1,11 @@
+<div id="container" [ngStyle]="{'height': isFullScreen? '100%': 'calc(100% - 64px)'}">
+  <p id="error" *ngIf="inCalib; else buttons">{{messageError}}</p>
+  <ng-template #buttons>
+    <div id="contBtns">
+      <button #home (click)="pcs.gamePageActive = 'home'">TORNA ALLA HOME</button>
+      <button #calib>RIFAI LA CALIBRAZIONE</button>
+    </div>
+  </ng-template>
+
+  <div id="pos" [ngStyle]="stylePos" *ngIf="inCalib"></div>
+</div>

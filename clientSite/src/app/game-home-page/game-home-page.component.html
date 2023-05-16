@@ -1,0 +1,7 @@
+<div id="background" [ngStyle]="{'height': isFullScreen? '100%': 'calc(100% - 64px)'}"></div>
+
+<div id="div-btns">
+  <button id="pianoL" #pianoLibero (click)="goToPiano(false)">PIANO LIBERO</button>
+  <button #calibrazione (click)="pcs.gamePageActive = 'calib'">CALIBRAZIONE</button>
+  <button #pianoConBase (click)="goToPiano(true)">PIANO CON BASE</button>
+</div>

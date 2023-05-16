@@ -1,0 +1,37 @@
+<div id="bg" [ngStyle]="{ 'height': pcs.isFullScreen? '100%' : 'calc(100% - 64px)' }"></div>
+
+<div id="info" [ngStyle]="{ 'height': isFullScreen? 'calc(45%)' : 'calc(45% - 64px)' }">
+  <div id="track-volume">
+    <div id="durata-canzone" *ngIf="conBase">
+      <p id="testo">{{timeSong}}</p>
+    </div>
+    <div id="volume">
+      <div id="barra" #barra>
+        <div *ngFor="let id of voidArr; let i = index" id="{{'_' + id}}" [ngStyle]="{ 'width': 'calc(100% / ' + N_VOLUME + ')' }" (click)="changeVolume(i)">
+          <div *ngFor="let c of ['bsx', 'asx', 'bdx', 'adx']" class="{{c}}"></div>
+        </div>
+      </div>
+      <div id="rotVolume" [ngStyle]="{ 'left': posRot }"></div>
+    </div>
+  </div>
+  <div id="menuSong" *ngIf="conBase">
+    <mat-form-field appearance="fill">
+      <mat-select #select value="{{titleReproduced}}" (selectionChange)="music(select.value)" (click)="select.open()">
+        <mat-option *ngFor="let tit of canzoni" class="options" value="{{tit}}">{{tit}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div id="sotto">
+  <button #home class="icon" (click)="pcs.gamePageActive = 'home'"><mat-icon>home</mat-icon></button>
+  <div id="div-perispective">
+    <div id="piano" #piano>
+      <button *ngFor="let _note of getNote(); let i = index" type="button" id="{{_note}}" class="key-{{classNotes[i]}}" (click)="sound(_note)">
+        <div *ngFor="let c of ['bsx', 'asx', 'bdx', 'adx']" class="{{c}}"></div>
+      </button>
+    </div>
+  </div>
+  <button #pauseResume class="icon" id="pauseResume" (click)="togglePauseResume()"><mat-icon>{{icon}}</mat-icon></button>
+</div>
+

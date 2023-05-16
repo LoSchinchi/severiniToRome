@@ -1,0 +1,44 @@
+#container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#error {
+  color: white;
+  letter-spacing: 0.2em;
+  font-size: 40px;
+  width: 50%;
+  text-align: center;
+  line-height: 1.5;
+}
+
+button {
+  color: white;
+  background-color: #cb6ce6;
+  border-radius: 15px;
+  text-decoration: none;
+  padding: 30px 20px;
+  font-size: 32px;
+  font-family: tahoma, serif;
+  letter-spacing: 5px;
+  font-weight: bold;
+  filter: drop-shadow(0 0 20px #cb6ce6) contrast(2) brightness(1.5);
+  transition: all 0.5s ease;
+}
+
+#contBtns {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#pos {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
